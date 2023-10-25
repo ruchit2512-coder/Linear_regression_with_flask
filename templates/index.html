@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Deployment Tutorial 1</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<!-- <link rel="stylesheet" href="file/style.css"> -->
+  
+</head>
+
+<body style="background: #000;">
+ <div class="login">
+	<h1>Sales Forecasting</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+     <!-- {{ url_for('predict')}} -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="number" name="age" placeholder="age" required="required" />
+      <input type="number" name="present price" placeholder="present price in lacks" required="required" />
+		  <input type="number" name="Kms_driven" placeholder="Kelometer Driven" required="required" />
+      <!-- <input type="text" name="Fuel_type" placeholder="Fuel Type" required="required" /> -->
+      <label for="dropdown_fuel">Select Fuel type from beloew dropdown:</label>
+      <select id="dropdown_fuel" name="dropdown_fuel">
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="CNG">CNG</option>
+      </select>
+      <br>
+      <hr>
+      <!-- <input type="text" name="Seller Type" placeholder="Seller Type" required="required" /> -->
+      <label for="dropdown_seller">Select Seller Type from beloew dropdown:</label>
+      <select id="dropdown_seller" name="dropdown_seller">
+          <option value="Dealer">Dealer</option>
+          <option value="Individual">Individual</option>
+      </select>
+      <br>
+      <hr>
+      <!-- <input type="text" name="Transmission" placeholder="Transmission Type" required="required" /> -->
+      <label for="dropdown_transmission">Select Transmission type from beloew dropdown:</label>
+      <select id="dropdown_transmission" name="dropdown_transmission">
+          <option value="Manual">Manual</option>
+          <option value="Automatic">Automatic</option>
+      </select>
+      <br>
+      <hr>
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict selling price of car </button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+</body>
+</html>
